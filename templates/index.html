@@ -11,13 +11,12 @@
 <body>
   <header class="site-header">
     <img src="{{ url_for('static', filename='logo.png') }}" alt="RNA-ASO Predictor Web App Logo" class="logo" />
-    <h1>RNA-ASO Predictor Web App</h1>
   </header>
 
   <main class="container">
     <section class="abstract">
-      <h2>📖 Abstract</h2>
-      <p>
+      <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Abstract</h2>
+      <p style="font-size: 0.9rem; line-height: 1.5;">
         We present an interactive, browser-based interface powered by a deep-learning model for the
         design of antisense oligonucleotides (ASOs). Upon input of a target RNA sequence, the system
         computes and returns an optimized ASO, streamlined for rapid in-silico screening and experimental
@@ -27,9 +26,9 @@
     </section>
 
     <section class="predictor">
-      <h2>🧬 Predict Your ASO</h2>
+      <h2>Predict Your ASO</h2>
       <form id="aso-form">
-        <label for="rna-input">Enter RNA Sequence</label>
+        <label for="rna-input">Enter an RNA Sequence</label>
         <textarea id="rna-input" placeholder="e.g., AUGCUACGUA..." rows="2"></textarea>
         <button type="submit">Predict ASO</button>
       </form>
@@ -64,3 +63,4 @@
   </script>
 </body>
 </html>
+

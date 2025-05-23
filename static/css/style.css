@@ -1,9 +1,9 @@
 
 :root {
   --color-primary: #2D3748;
-  --color-accent: #4299E1;
-  --color-dark: #1A202C;
-  --color-light: #F7FAFC;
+  --color-accent:    #FF8C00; /* orange */
+  --color-dark:      #002244; /* navy */
+  --color-light:     #F9F9F9; /* off-white */
   --font-sans: 'Open Sans', system-ui, sans-serif;
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
