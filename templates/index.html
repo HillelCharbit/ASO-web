@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RNA ➔ ASO Predictor</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RNA-ASO Predictor Web App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>RNA ➔ ASO Predictor</h1>
-    </header>
-    <main>
-      <form id="aso-form">
-        <label for="rna-input">RNA Sequence</label>
-        <textarea id="rna-input" name="rna_sequence" placeholder="AUGGCU..." required></textarea>
-        <button type="submit">Generate ASO</button>
-      </form>
-      <section class="output">
-        <h2>Predicted ASO</h2>
-        <pre id="aso-output">--</pre>
-      </section>
-    </main>
-    <footer>
-      <p>© 2025 RNA-ASO Predictor</p>
-    </footer>
-  </div>
+  <header>
+    <img src="{{ url_for('static','logo.png') }}" alt="RNA-ASO Predictor Web App Logo">
+    <h1>RNA-ASO Predictor Web App</h1>
+  </header>
 
-  <script>
-    document.getElementById('aso-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const seq = document.getElementById('rna-input').value;
-      const res = await fetch('/predict', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ rna_sequence: seq })
-      });
-      const json = await res.json();
-      document.getElementById('aso-output').textContent =
-        res.ok ? json.aso : 'Error: ' + json.error;
-    });
-  </script>
+  <main>
+    <!-- Abstract section -->
+    <section class="card description">
+      <h2>📖 Abstract</h2>
+      <p>
+        We present an interactive, browser-based interface powered by a deep-learning model for the design of antisense oligonucleotides (ASOs).
+        Upon input of a target RNA sequence, the system computes and returns an optimized ASO, streamlined for rapid in-silico screening and experimental planning.
+        This tool aims to accelerate ASO discovery workflows in both academic research and therapeutic development.
+      </p>
+    </section>
+
+    <!-- Input form -->
+    <section class="card form-section">
+      <label for="rna-input">Enter RNA Sequence:</label>
+      <textarea id="rna-input" placeholder="e.g., AUGCUACG..."></textarea>
+      <button id="predict-btn">Predict ASO</button>
+    </section>
+
+    <!-- Result display -->
+    <section class="card result-section">
+      <h2>🧬 Predicted ASO</h2>
+      <pre id="aso-output">Your ASO will appear here…</pre>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static','script.js') }}"></script>
 </body>
 </html>

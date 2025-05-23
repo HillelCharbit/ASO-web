@@ -1,91 +1,118 @@
+/*── Color palette ─────────────────────────────────────────────────────────*/
 :root {
-    --primary-color: #4a90e2;
-    --secondary-color: #ffffff;
-    --bg-gradient: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-    --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: var(--font-sans);
-    background: var(--bg-gradient);
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
-  
-  .container {
-    background: var(--secondary-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  header h1 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  form label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  textarea {
-    resize: vertical;
-    min-height: 100px;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: monospace;
-    margin-bottom: 1rem;
-  }
-  
-  button {
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    border: none;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  button:hover {
-    background: #357ab8;
-  }
-  
-  .output {
-    margin-top: 1.5rem;
-  }
-  
-  .output pre {
-    background: #f7f9fa;
-    padding: 1rem;
-    border-radius: 4px;
-    overflow-x: auto;
-  }
-  
-  footer {
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.875rem;
-    color: #666;
-  }
-  
+  --teal: #008080;
+  --orange: #ff7f00;
+  --navy: #023047;
+  --light: #f0f4f8;
+  --dark: #001219;
+}
+
+/*── Reset & base styles ────────────────────────────────────────────────────*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/*── Header ─────────────────────────────────────────────────────────────────*/
+header {
+  text-align: center;
+  background: #ffffff;
+  border-bottom: 4px solid var(--teal);
+  padding: 1rem 0;
+}
+
+header img {
+  width: 120px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0.5rem 0 0;
+  color: var(--navy);
+}
+
+/*── Layout ─────────────────────────────────────────────────────────────────*/
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section.card {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/*── Description (Abstract) ─────────────────────────────────────────────────*/
+.description h2 {
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.description p {
+  margin: 0;
+}
+
+/*── Form Section ───────────────────────────────────────────────────────────*/
+.form-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--teal);
+}
+
+.form-section textarea {
+  width: 100%;
+  height: 120px;
+  padding: 0.5rem;
+  font-family: monospace;
+  border: 2px solid var(--teal);
+  border-radius: 4px;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.form-section button {
+  background: var(--orange);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-section button:hover {
+  background: var(--navy);
+}
+
+/*── Result Section ─────────────────────────────────────────────────────────*/
+.result-section h2 {
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+#aso-output {
+  background: var(--light);
+  border: 1px solid var(--teal);
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-family: monospace;
+  word-break: break-all;
+}
