@@ -53,7 +53,7 @@
         const res = await fetch('/predict', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ rna: seq })
+          body: JSON.stringify({ rna_sequence: seq })
         });
         const { aso } = await res.json();
         out.textContent = aso;
