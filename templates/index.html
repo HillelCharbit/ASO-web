@@ -4,39 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>RNA-ASO Predictor Web App</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- you can swap in your Google Font of choice -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <img src="{{ url_for('static','logo.png') }}" alt="RNA-ASO Predictor Web App Logo">
+  <header class="site-header">
+    <img src="assets/logo.png" alt="RNA-ASO Predictor Web App Logo" class="logo" />
     <h1>RNA-ASO Predictor Web App</h1>
   </header>
 
-  <main>
-    <!-- Abstract section -->
-    <section class="card description">
+  <main class="container">
+    <section class="abstract">
       <h2>📖 Abstract</h2>
       <p>
-        We present an interactive, browser-based interface powered by a deep-learning model for the design of antisense oligonucleotides (ASOs).
-        Upon input of a target RNA sequence, the system computes and returns an optimized ASO, streamlined for rapid in-silico screening and experimental planning.
-        This tool aims to accelerate ASO discovery workflows in both academic research and therapeutic development.
+        We present an interactive, browser-based interface powered by a deep-learning model for the
+        design of antisense oligonucleotides (ASOs). Upon input of a target RNA sequence, the system
+        computes and returns an optimized ASO, streamlined for rapid in-silico screening and experimental
+        planning. This tool aims to accelerate ASO discovery workflows in both academic research and
+        therapeutic development.
       </p>
     </section>
 
-    <!-- Input form -->
-    <section class="card form-section">
-      <label for="rna-input">Enter RNA Sequence:</label>
-      <textarea id="rna-input" placeholder="e.g., AUGCUACG..."></textarea>
-      <button id="predict-btn">Predict ASO</button>
-    </section>
+    <section class="predictor">
+      <h2>🧬 Predict Your ASO</h2>
+      <form id="aso-form">
+        <label for="rna-input">Enter RNA Sequence</label>
+        <textarea id="rna-input" placeholder="e.g., AUGCUACGUA..." rows="2"></textarea>
+        <button type="submit">Predict ASO</button>
+      </form>
 
-    <!-- Result display -->
-    <section class="card result-section">
-      <h2>🧬 Predicted ASO</h2>
-      <pre id="aso-output">Your ASO will appear here…</pre>
+      <div id="result" class="result">
+        <h3>🔬 Predicted ASO</h3>
+        <p id="aso-output">Your ASO will appear here…</p>
+      </div>
     </section>
   </main>
 
-  <script src="{{ url_for('static','script.js') }}"></script>
+  <script>
+    // hookup your existing fetch to /predict endpoint
+    document.getElementById('aso-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const seq = document.getElementById('rna-input').value.trim();
+      const out = document.getElementById('aso-output');
+      out.textContent = '…thinking…';
+
+      try {
+        const res = await fetch('/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rna: seq })
+        });
+        const { aso } = await res.json();
+        out.textContent = aso;
+      } catch (err) {
+        out.textContent = 'Error predicting ASO.';
+      }
+    });
+  </script>
 </body>
 </html>
