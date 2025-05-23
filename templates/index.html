@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RNA ➔ ASO Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>RNA ➔ ASO Predictor</h1>
+    </header>
+    <main>
+      <form id="aso-form">
+        <label for="rna-input">RNA Sequence</label>
+        <textarea id="rna-input" name="rna_sequence" placeholder="AUGGCU..." required></textarea>
+        <button type="submit">Generate ASO</button>
+      </form>
+      <section class="output">
+        <h2>Predicted ASO</h2>
+        <pre id="aso-output">--</pre>
+      </section>
+    </main>
+    <footer>
+      <p>© 2025 RNA-ASO Predictor</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('aso-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const seq = document.getElementById('rna-input').value;
+      const res = await fetch('/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rna_sequence: seq })
+      });
+      const json = await res.json();
+      document.getElementById('aso-output').textContent =
+        res.ok ? json.aso : 'Error: ' + json.error;
+    });
+  </script>
+</body>
+</html>
