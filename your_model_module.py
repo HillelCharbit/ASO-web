@@ -1,3 +1,4 @@
+
 class ASOModel:
     def __init__(self):
         pass
@@ -28,4 +29,4 @@ def load_model():
     Returns:
         ASOModel: An instance of the ASO model
     """
-    return ASOModel() 
+    return ASOModel()
