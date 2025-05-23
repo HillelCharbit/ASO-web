@@ -1,6 +1,5 @@
 <p align="center">
   <img src="assets/logo.png" alt="RNA-ASO Predictor Logo" width="350" />
-  <h1 align="center">RNA-ASO Predictor Web App</h1>
   <p align="center">
     <a href="LICENSE">
       <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg"/>
