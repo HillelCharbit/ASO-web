@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, jsonify
-import your_model_module  # replace with your model import
+import your_model_module as model  # replace with your model import
 
 app = Flask(__name__)
 
-# load or initialize your ASO model\model = your_model_module.load_model()
+# load or initialize your ASO model
+model_instance = model.load_model()
 
 @app.route('/', methods=['GET'])
 def index():
@@ -17,7 +18,7 @@ def predict():
         return jsonify({'error': 'No sequence provided'}), 400
 
     try:
-        aso = model.predict_aso(rna_seq)
+        aso = model_instance.predict_aso(rna_seq)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
