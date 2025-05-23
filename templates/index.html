@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>RNA-ASO Predictor Web App</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   <!-- you can swap in your Google Font of choice -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="site-header">
-    <img src="assets/logo.png" alt="RNA-ASO Predictor Web App Logo" class="logo" />
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="RNA-ASO Predictor Web App Logo" class="logo" />
     <h1>RNA-ASO Predictor Web App</h1>
   </header>
 
